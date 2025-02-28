@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scientist</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+
+    <script>
+      function styleMe() {
+        const upcoming = document.getElementsByClassName("upcomingEvents");
+        const button = document.getElementById("stylez");
+
+        for (let i = 0; i < upcoming.length; i++) {
+          upcoming[i].style.backgroundColor = "lightblue";
+          upcoming[i].style.border = "1px solid black";
+          upcoming[i].style.padding = "10px";
+          upcoming[i].style.margin = "10px";
+          upcoming[i].style.borderRadius = "10px";
+          upcoming[i].style.fontSize = "15px";
+          upcoming[i].style.color = "white";
+          upcoming[i].style.fontFamily = "Nunito";
+        }
+        button.style.backgroundColor = "lightblue";
+        button.style.border = "1px solid black";
+        button.style.padding = "3px";
+      }
+      function createArticleDivs() {
+        const container = document.querySelector(".container .row");
+
+        // Array of article data (name and description)
+        const articles = [
+          {
+            name: "Article 1",
+            description: "This is the description for Article 1.",
+          },
+          {
+            name: "Article 2",
+            description: "This is the description for Article 2.",
+          },
+          {
+            name: "Article 3",
+            description: "This is the description for Article 3.",
+          },
+        ];
+
+        // Loop through the articles and create divs
+        articles.forEach((article) => {
+          const div = document.createElement("div");
+          div.className = "article"; // Add the same class to all divs
+
+          // Add attributes (data-name and data-description)
+          div.setAttribute("data-name", article.name);
+          div.setAttribute("data-description", article.description);
+         
+
+          // Add content to the div
+          div.innerHTML = `
+            <h3>${article.name}</h3>
+            <p>${article.description}</p>
+          `;
+
+          // Add some basic styling
+          div.style.border = "1px solid #ccc";
+          div.style.padding = "10px";
+          div.style.margin = "10px 0";
+          div.style.borderRadius = "5px";
+          div.style.backgroundColor = "#f9f9f9";
+
+          // Append the div to the container
+          container.appendChild(div);
+        });
+      }
+
+      // Call the function to create divs when the page loads
+      window.onload = createArticleDivs;
+
+    //   function Fav() {
+    //     form.addEventListener("submit", (event) => {
+    //       event.preventDefault();
+    //       alert(`Your favourite scientist is ${input.value}`);
+    //     });
+    //   }
+
+      function Fav() {
+        const form = document.getElementById("form");
+        const input = document.getElementById("scientist");
+
+        form.addEventListener("submit", (event) => {
+          event.preventDefault();
+          const output = document.querySelector(".output");
+          output.innerHTML = `Your favourite scientist is ${input.value}`;
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <header class="header">
+      <h1>Scientist Name</h1>
+      <hr>
+    </header>
+    <p class="inline">
+      <img src="scientist.jpg" alt="Scientist Image" />
+      <span class="rightside"
+        >Stephen Hawking, born on January 8, 1942, in Oxford, England, was a
+        brilliant physicist known for his groundbreaking work on black holes and
+        cosmology. Despite being diagnosed with ALS at 21 and given only a few
+        years to live, Hawking defied the odds, earning his PhD and becoming a
+        world-renowned scientist. He developed the theory of Hawking Radiation,
+        proving black holes emit radiation, and authored the best-selling book A
+        Brief History of Time, which made complex scientific concepts accessible
+        to the public. Confined to a wheelchair and reliant on a voice
+        synthesizer, Hawking continued to inspire through his resilience,
+        popular science writings, and appearances in media. He received numerous
+        honors, including the Presidential Medal of Freedom, and dreamed of
+        traveling to space, symbolizing his lifelong curiosity and
+        determination.</span
+      >
+    </p>
+    <header class="minorHeader"><h1>Upcoming Events</h1></header>
+    <div class="container events">
+      <div class="upcomingEvents col-sm-4">
+        <h3>Sightsavers Speech</h3>
+        <h2>Churchill College Cambridge</h2>
+        <h2>2017</h2>
+      </div>
+      <div class="upcomingEvents col-sm-4">
+        <h3>Oxford Union Speech</h3>
+        <h2>Oxford University</h2>
+        <h2>2016</h2>
+      </div>
+      <div class="upcomingEvents col-sm-4">
+        <h3>S.H. 75 Public Symposium</h3>
+        <h2>Lady Mitchell Hall</h2>
+        <h2>2017</h2>
+      </div>
+    </div>
+    <div class="butn">
+    <button id="stylez" type="submit" onclick="styleMe()">Style Me</button>
+</div>
+
+    <div class="container">
+      <header class="minorHeader"><h1>Articles</h1></header>
+      <div class="row"></div>
+    </div>
+    <h1>Favourite Scientist</h1>
+    <form id="form">
+      <label for="scientist">Input your favourite scientist:</label>
+      <input type="text" id="scientist" name="scientist" />
+      <button type="submit" onclick="Fav()">Submit</button>
+      <div class="output"></div>
+    </form>
+    <footer>
+      <hr />
+      <p>Scientist Industrial Activity</p>
+    </footer>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
